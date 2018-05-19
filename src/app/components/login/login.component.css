@@ -1,0 +1,14 @@
+.titulo {
+  text-align: center;
+  text-decoration: underline;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: xx-large
+}
+
+.form-log {
+  border: 1px solid #8a6d3b;
+  background-color: #8a6d3b;
+  box-shadow: 7px 7px 8px #8c8c8c;
+}
