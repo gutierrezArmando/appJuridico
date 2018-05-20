@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatosExpedientesService } from "../../../servicios/datos-expedientes.service";
+import { Materiacivil } from "../../../clases/materiacivil";
 
 @Component({
   selector: 'app-agregarexpedientes',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarexpedientesComponent implements OnInit {
 
-  materiaCivilArre = ['CIVIL', 'PENAL', 'FAMILIAR', 'MERCANTIL'];
+  materiaCivilArre: Materiacivil[];
 
-  constructor() { }
+  constructor(private expedienteServicio: DatosExpedientesService) {
+    this.expedienteServicio.getMaterias().subscribe(materias=>{
+      this.materiaCivilArre = materias;
+    })
+    //this.materiaCivilArre = expedienteServicio.getMateriasCiviles();
+  }
 
   ngOnInit() {
   }

@@ -1,25 +1,25 @@
 <h2 class="titulo">Nuevo Expediente</h2>
 
 <div class="row">
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Numero:</label>
       <input type="text" #txtNumero class="form-control">
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Año:</label>
       <input type="number" #txtNumero class="form-control">
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Tipo de Juicio:</label>
       <input type="text" #txtNumero class="form-control">
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Clave busqueda:</label>
       <input type="text" #txtNumero class="form-control">
@@ -28,11 +28,11 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Materia Civil:</label>
       <select class="form-control" (change)="saludar($event)">
-        <option *ngFor="let materiaCivil of materiaCivilArre">{{materiaCivil}}</option>
+        <option *ngFor="let materiaCivil of materiaCivilArre" [value]="materiaCivil.id">{{materiaCivil.tipo}}</option>
         <!--<option value="">(Selecciona)</option>-->
         <!--<option value="CIVIL" >CIVIL</option>-->
         <!--<option  value="PENAL">PENAL</option>-->
@@ -40,7 +40,7 @@
       </select>
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Partido Judicial:</label>
       <select class="form-control">
@@ -51,7 +51,7 @@
       </select>
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Juzgado:</label>
       <select class="form-control">
@@ -62,7 +62,7 @@
       </select>
     </div>
   </div>
-  <div class="col-xs-12 col-lg-3">
+  <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Secretaria:</label>
       <select class="form-control">
@@ -76,7 +76,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-lg-3 pull-right">
+  <div class="col-xs-12 col-lg-3  col-md-3 pull-right">
     <button class="btn btn-primary btn-block">
       Agregar
     </button>
