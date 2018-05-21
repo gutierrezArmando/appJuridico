@@ -1,75 +1,80 @@
+
 <h2 class="titulo">Nuevo Expediente</h2>
 
 <div class="row">
+
+  <!--Captura numero de expediente-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
-      <label class="control-label">Numero:</label>
-      <input type="text" #txtNumero class="form-control">
+      <label class="control-label">Numero: {{expediente.numero}}</label>
+      <input #txtNumero type="text" placeholder="Numero de expediente" class="form-control" [(ngModel)] = "expediente.numero">
     </div>
   </div>
+
+  <!--Captura Anio del expediente-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Año:</label>
-      <input type="number" #txtNumero class="form-control">
+      <input type="number" class="form-control" placeholder="Año del expediente" [(ngModel)]="expediente.anio">
     </div>
   </div>
+
+  <!--Captura del Tipo de Juicio-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Tipo de Juicio:</label>
-      <input type="text" #txtNumero class="form-control">
+      <input type="text" class="form-control" placeholder="sucesorio, desahucio" [(ngModel)] = "expediente.tipoJuicio">
     </div>
   </div>
+
+  <!--Captura de la clave de busqueda-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Clave busqueda:</label>
-      <input type="text" #txtNumero class="form-control">
+      <input type="text" class="form-control" placeholder="Clave de busqueda" [(ngModel)] = "expediente.clavebusqueda">
     </div>
   </div>
 </div>
 
 <div class="row">
+  <!--Seleccion de Materia Civil-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Materia Civil:</label>
-      <select class="form-control" (change)="saludar($event)">
-        <option *ngFor="let materiaCivil of materiaCivilArre" [value]="materiaCivil.id">{{materiaCivil.tipo}}</option>
-        <!--<option value="">(Selecciona)</option>-->
-        <!--<option value="CIVIL" >CIVIL</option>-->
-        <!--<option  value="PENAL">PENAL</option>-->
-        <!--<option value="FAMILIAR">FAMILIAR</option>-->
+      <select class="form-control" [(ngModel)]="expediente.materiaCivil" (change)="getListaJuzgados()">
+        <option *ngFor="let materiaCivil of materiaCivilArre" [value]="materiaCivil.tipo">{{materiaCivil.tipo}}</option>
       </select>
+      <label>{{expediente.materiaCivil}}</label>
     </div>
   </div>
+
+  <!--Seleccion de Partido Judicial-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Partido Judicial:</label>
-      <select class="form-control">
-        <option>(Selecciona)</option>
-        <option>Tijuana</option>
-        <option>Mexicali</option>
-        <option>Rosarito</option>
+      <select class="form-control" [(ngModel)] ="expediente.partidoJudicial" (change)="getListaJuzgados()">
+        <option *ngFor="let partido of listaPartidos" [value]="partido.ciudad">{{partido.ciudad}}</option>
       </select>
     </div>
   </div>
+
+
+  <!--Seleccion de Juzgado-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
-      <label class="control-label">Juzgado:</label>
-      <select class="form-control">
-        <option>(Selecciona)</option>
-        <option>PRIMERO</option>
-        <option>SEGUNDO</option>
-        <option>TERCERO</option>
+      <label class="control-label">Juzgado: {{expediente.juzgado}}</label>
+      <select class="form-control" [(ngModel)]="expediente.juzgado" (change)="getListaSecretarias()">
+        <option *ngFor="let juzgado of listaJuzgados" [value]="juzgado.numero">{{juzgado.numero}}</option>
       </select>
     </div>
   </div>
+
+  <!--Seleccion de Secretarias-->
   <div class="col-xs-12 col-lg-3 col-md-3">
     <div class="form-group">
       <label class="control-label">Secretaria:</label>
-      <select class="form-control">
-        <option>(Selecciona)</option>
-        <option>PRIMERA</option>
-        <option>SEGUNDA</option>
-        <option>TERCERA</option>
+      <select class="form-control" [(ngModel)] = "expediente.secretaria">
+        <option *ngFor="let secretaria of listaSecretarias" [value]="secretaria.numero">{{secretaria.numero}}</option>
       </select>
     </div>
   </div>
@@ -77,9 +82,15 @@
 
 <div class="row">
   <div class="col-xs-12 col-lg-3  col-md-3 pull-right">
-    <button class="btn btn-primary btn-block">
+    <!--<button class="btn btn-primary btn-block" (click)="saludar(dropdownMaterias.options[dropdownMaterias.selectedIndex].textContent)">-->
+    <button class="btn btn-primary btn-block" (click)="agregarExpediente()">
       Agregar
     </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-4 col-lg-offset-4">
+    <h2>{{mensaje.msg}}</h2>
   </div>
 </div>
 
