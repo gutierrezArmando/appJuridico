@@ -10,16 +10,25 @@ import {Mensaje} from "../../clases/mensaje";
 export class AgregarPartesComponent implements OnInit {
 
   mensaje = new Mensaje();
+  nombre = '';
+  apellido = '';
   constructor(private partesServicio: PartesService) { }
 
   ngOnInit() {
   }
 
-  agregarParte(nombre: HTMLInputElement, apellido: HTMLInputElement){
-    this.partesServicio.addExpediente(nombre.value, apellido.value).subscribe(res=>{
-      this.mensaje = res;
-      console.log(this.mensaje);
-    });
+  agregarParte(){
+    if( this.nombre==='' || this.apellido==='') {
+      this.mensaje.msg="Error, falta uno o mas parámetros";
+    }
+    else
+    {
+      this.partesServicio.addExpediente(this.nombre, this.apellido).subscribe(res => {
+        this.mensaje = res;
+        console.log(this.mensaje);
+      });
+
+    }
     // this.expedienteServicio.addExpediente(this.expediente).subscribe(res =>{
     //   this.mensaje = res;
     //   console.log(this.mensaje);
