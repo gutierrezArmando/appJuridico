@@ -53,14 +53,4 @@ export class AgregarexpedientesComponent implements OnInit {
     });
   }
 
-  // getListaSecretarias(idJuzgado: any) {
-  //   this.expedienteServicio.getSecretarias(idJuzgado).subscribe( secretarias =>{
-  //     this.listaSecretarias = secretarias;
-  //   })
-  // }
-
-
-
-
-
 }

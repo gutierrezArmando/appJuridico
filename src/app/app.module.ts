@@ -9,6 +9,8 @@ import { MainformComponent } from './components/mainform/mainform.component';
 import { AgregarexpedientesComponent } from './components/expedientes/agregarexpedientes/agregarexpedientes.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DatosExpedientesService} from "./servicios/datos-expedientes.service";
+import { AgregarPartesComponent } from './components/agregar-partes/agregar-partes.component';
+import {PartesService} from "./servicios/partes.service";
 
 
 @NgModule({
@@ -16,14 +18,15 @@ import {DatosExpedientesService} from "./servicios/datos-expedientes.service";
     AppComponent,
     LoginComponent,
     MainformComponent,
-    AgregarexpedientesComponent
+    AgregarexpedientesComponent,
+    AgregarPartesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [DatosExpedientesService],
+  providers: [DatosExpedientesService, PartesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
