@@ -7,14 +7,25 @@ import {Mensaje} from "../clases/mensaje";
 export class PartesService {
 
   url = "http://localhost:3000/API/despacho";
+  headers: any;
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    this.headers = new Headers();
+    this.headers.append('Content-type', 'application/json');
+  }
+
+  // addExpediente(nombre: string, apellido: string) {
+  //   var datos = new HttpParams()
+  //     .set('nombre', nombre)
+  //     .set('apellido', apellido);
+  //   return this.http.get<Mensaje>(this.url+"/partes/add",{params: datos}).map(res=>res);
+  // }
+
 
   addExpediente(nombre: string, apellido: string) {
-    var datos = new HttpParams()
-      .set('nombre', nombre)
-      .set('apellido', apellido);
-    return this.http.get<Mensaje>(this.url+"/partes/add",{params: datos}).map(res=>res);
+    const datos = {'nombre': nombre, 'apellido': apellido};
+    return this.http.post(this.url + '/partes/add', datos, this.headers)
+      .map(res => res);
   }
 
 
